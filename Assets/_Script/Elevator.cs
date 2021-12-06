@@ -1,11 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
+    [SerializeField] float waitTime = 6;
     [SerializeField] float speed;
     [SerializeField] Transform[] points;
     [SerializeField] AudioSource[] sounds; 
 
+    bool doorClosed;
     bool canSetup = true;
     bool move;
     float step;
@@ -24,11 +27,13 @@ public class Elevator : MonoBehaviour
 
     static readonly int AnimationDoorOpen = Animator.StringToHash("open");
     static readonly int AnimationDoorClose = Animator.StringToHash("close");
+    static readonly int AnimationDoorCloseOnly = Animator.StringToHash("closeOnly");
 
     private void Awake()
     {
         step = speed * Time.deltaTime;
         animator = GetComponent<Animator>();
+        StartCoroutine(WaitToCloseDoor());
     }
 
     private void Update()
@@ -48,12 +53,14 @@ public class Elevator : MonoBehaviour
 
     public void OpenDoor()
     {
+        doorClosed = false;
         animator.SetTrigger(AnimationDoorOpen);
+        AudioPlay(Sound.Open);
+        StartCoroutine(WaitToCloseDoor());
     }
 
     public void SetTarget(int target)
     {
-        Debug.Log("Try set new target.");
         if (canSetup)
         {
             if (points[target] == null)
@@ -69,13 +76,19 @@ public class Elevator : MonoBehaviour
             {
                 direction = currentTarget.position - transform.position;
                 direction = direction.normalized;
-                PrepareToMove();
+                if (doorClosed) StartMove();
+                else PrepareToMove();
+            }
+            else
+            {
+                if (doorClosed) OpenDoor();
             }
         }
     }
 
     void PrepareToMove()
     {
+        StopAllCoroutines();
         canSetup = false;
         animator.SetTrigger(AnimationDoorClose);
         AudioPlay(Sound.Close);
@@ -96,9 +109,8 @@ public class Elevator : MonoBehaviour
     void EndMove()
     {
         move = false;
+        OpenDoor();
         AudioStop(Sound.Move);
-        AudioPlay(Sound.Open);
-        animator.SetTrigger(AnimationDoorOpen);
     }
 
     void AudioPlay(Sound sound)
@@ -114,5 +126,17 @@ public class Elevator : MonoBehaviour
     void SetSetupTrue()
     {
         canSetup = true;
+    }
+
+    void SetDoorClosed()
+    {
+        doorClosed = true;
+    }
+
+    IEnumerator WaitToCloseDoor()
+    {
+        yield return new WaitForSeconds(waitTime);
+        animator.SetTrigger(AnimationDoorCloseOnly);
+        AudioPlay(Sound.Close);
     }
 }
