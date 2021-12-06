@@ -845,10 +845,7 @@ GameObject:
   - component: {fileID: 64316372510306470}
   - component: {fileID: 1113170767}
   - component: {fileID: 1113170769}
-  - component: {fileID: 1192641202}
-  - component: {fileID: 1192641203}
-  - component: {fileID: 1192641204}
-  - component: {fileID: 1192641206}
+  - component: {fileID: 1192641210}
   m_Layer: 0
   m_Name: PTK_Elevator
   m_TagString: Untagged
@@ -979,7 +976,7 @@ MonoBehaviour:
   - {fileID: 1821080229}
   - {fileID: 44305003}
   - {fileID: 744461428}
---- !u!114 &1192641202
+--- !u!114 &1192641210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -988,105 +985,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1700556721083670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8a11ebcabfb6524f959c266bb788493, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dd335b8a12fdb54da40ee5ba4f11999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5697773a02f1e054e90e4fd503d5fc8b, type: 2}
-  Response:
+  gameEvent: {fileID: 11400000, guid: a964977df734bee499d12b913b599477, type: 2}
+  unityEventResponse:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1113170769}
         m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
         m_MethodName: SetTarget
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1192641203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700556721083670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8a11ebcabfb6524f959c266bb788493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 2101cc2d40b8c5a4eab4022f0464b593, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1113170769}
-        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
-        m_MethodName: SetTarget
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1192641204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700556721083670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8a11ebcabfb6524f959c266bb788493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: c221f0cd0a43f4f4a9ec642f049df48c, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1113170769}
-        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
-        m_MethodName: SetTarget
-        m_Mode: 3
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1192641206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700556721083670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8a11ebcabfb6524f959c266bb788493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 0b8e3a2b2fd829d4a8c19463e307b712, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1113170769}
-        m_TargetAssemblyTypeName: Elevator, Assembly-CSharp
-        m_MethodName: SetTarget
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1135,7 +1048,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 1.8, z: 0.03}
+  m_Size: {x: 0.3, y: 1.8, z: 0.03}
   m_Center: {x: 0.95, y: 0.9214997, z: 0}
 --- !u!54 &6959704725209248363
 Rigidbody:
@@ -1209,7 +1122,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 1.8, z: 0.03}
+  m_Size: {x: 0.3, y: 1.8, z: 0.03}
   m_Center: {x: 0.95, y: 0.9214997, z: 0}
 --- !u!54 &7099841990796027325
 Rigidbody:
@@ -1246,6 +1159,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4336349914575674}
     m_Modifications:
+    - target: {fileID: 765502164053262607, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 765502164053262607, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 765502164053262607, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 765502164053262607, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1556958344679679895, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1302,6 +1231,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1113170769}
+    - target: {fileID: 2849409907614999971, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849409907614999971, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849409907614999971, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849409907614999971, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3579122075038342253, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1310,6 +1255,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1113170769}
+    - target: {fileID: 8136082111557560309, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136082111557560309, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136082111557560309, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8136082111557560309, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145660579418650901, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145660579418650901, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145660579418650901, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145660579418650901, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0839e0b92ffc9f64f95e63d36d2262f8, type: 3}
 --- !u!4 &5786771610937422305 stripped

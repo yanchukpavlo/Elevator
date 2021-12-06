@@ -1,9 +1,11 @@
 using UnityEngine;
+using SOEvents;
 
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class CallElevator : MonoBehaviour
 {
-    [SerializeField] GameEvent @event;
+    [SerializeField] int floorNumber;
+    [SerializeField] IntEvent intEvent;
 
     Animator animator;
 
@@ -33,6 +35,6 @@ public class CallElevator : MonoBehaviour
 
     public void Call()
     {
-        @event.Invoke();
+        intEvent.Invoke(floorNumber);
     }
 }

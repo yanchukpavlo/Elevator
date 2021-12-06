@@ -53,6 +53,7 @@ public class Elevator : MonoBehaviour
 
     public void SetTarget(int target)
     {
+        Debug.Log("Try set new target.");
         if (canSetup)
         {
             if (points[target] == null)
