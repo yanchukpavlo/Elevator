@@ -6,6 +6,7 @@ public class Elevator : MonoBehaviour
     [SerializeField] Transform[] points;
     [SerializeField] AudioSource[] sounds; 
 
+    bool canSetup = true;
     bool move;
     float step;
     Transform currentTarget;
@@ -52,21 +53,31 @@ public class Elevator : MonoBehaviour
 
     public void SetTarget(int target)
     {
-        if (points[target] == null)
+        if (canSetup)
         {
-            Debug.LogError("New target can`t be NULL.");
-            Debug.Break();
+            if (points[target] == null)
+            {
+                Debug.LogError("New target can`t be NULL.");
+                Debug.Break();
+            }
+
+            currentTarget = points[target];
+
+            tempVector = currentTarget.position - transform.position;
+            if (tempVector.magnitude > step)
+            {
+                direction = currentTarget.position - transform.position;
+                direction = direction.normalized;
+                PrepareToMove();
+            }
         }
-
-        currentTarget = points[target];
-
-        direction = currentTarget.position - transform.position;
-        direction = direction.normalized;
     }
 
     void PrepareToMove()
     {
+        canSetup = false;
         animator.SetTrigger(AnimationDoorClose);
+        AudioPlay(Sound.Close);
     }
 
     void StartMove()
@@ -75,6 +86,7 @@ public class Elevator : MonoBehaviour
         AudioPlay(Sound.Start);
         AudioPlay(Sound.Move);
     }
+
     void Move()
     {
         transform.Translate(direction * step, Space.World);
@@ -96,5 +108,10 @@ public class Elevator : MonoBehaviour
     void AudioStop(Sound sound)
     {
         sounds[(int)sound].Stop();
+    }
+
+    void SetSetupTrue()
+    {
+        canSetup = true;
     }
 }

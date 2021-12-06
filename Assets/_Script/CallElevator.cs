@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class CallElevator : MonoBehaviour
 {
+    [SerializeField] GameEvent @event;
+
     Animator animator;
 
     static readonly int AnimationOn = Animator.StringToHash("on");
@@ -27,5 +29,10 @@ public class CallElevator : MonoBehaviour
         {
             animator.SetTrigger(AnimationOff);
         }
+    }
+
+    public void Call()
+    {
+        @event.Invoke();
     }
 }
